@@ -215,64 +215,12 @@ No API key required for public endpoints, but rate limits apply. A Node.js proxy
 
 ---
 
-## Key Implementation Notes
-
-### Scroll SVG line
-The path is a Catmull-Rom spline generated at load time from the full page height. `getTotalLength()` measures it once, then `scrollY / maxScroll` maps to `strokeDashoffset`:
-
-```js
-const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-activePath.setAttribute('stroke-dashoffset', pathLen * (1 - pct));
-```
-
-### Map tile duplication fix
-Two options are needed together — `noWrap: true` on the tile layer alone is not enough:
-
-```js
-L.map('map', {
-  worldCopyJump: false,
-  maxBounds: [[-90, -200], [90, 200]],
-  maxBoundsViscosity: 1.0,
-});
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  noWrap: true,
-});
-```
-
-### Lat/lng to 3D globe position
-```js
-function latLngTo3D(lat, lng, radius = 1.03) {
-  const phi   = (90 - lat)  * (Math.PI / 180);
-  const theta = (lng + 180) * (Math.PI / 180);
-  return new THREE.Vector3(
-    -radius * Math.sin(phi) * Math.cos(theta),
-     radius * Math.cos(phi),
-     radius * Math.sin(phi) * Math.sin(theta)
-  );
-}
-```
-
----
-
-## Roadmap
-
-- [ ] Node.js proxy server for API caching and rate limit handling
-- [ ] Historical data view (30-day, 90-day)
-- [ ] Location-based auto-detection on load
-- [ ] Push notifications for AQI threshold breaches
-- [ ] Comparison mode — two cities side by side
-- [ ] CSV export for city data
-- [ ] PWA support for offline reference
-- [ ] Dark/light theme toggle
-
----
-
 ## Research Publication
 
 This project was developed alongside published research in computational environmental monitoring:
 
-**Shikhar Bhardwaj et al.** — *[Paper Title]*, ICCDM 2026, Springer Lecture Notes in Networks and Systems (LNNS), Scopus-indexed.
+**Shikhar Bhardwaj et al.** — *[Solar Energy Assessment Through Building Integrated Photovoltaics on Facades and Energy Efficiency at
+LOD 1]*, ICCDM 2026, Springer Lecture Notes in Networks and Systems (LNNS), Scopus-indexed.
 
 ---
 
@@ -283,15 +231,7 @@ B.Tech Information Technology — KIET Group of Institutions, Ghaziabad (2022–
 
 - GitHub: [@s-hikk](https://github.com/s-hikk)
 - LinkedIn: [shikhar-bhardwaj-110b34309](https://www.linkedin.com/in/shikhar-bhardwaj-110b34309/)
-- Portfolio: *Coming soon — built on the CityPulse template*
 
----
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
-Data provided by [OpenAQ](https://openaq.org) under CC BY 4.0. AQI methodology from the [US EPA AirNow program](https://www.airnow.gov/aqi/aqi-basics/).
 
 ---
 
