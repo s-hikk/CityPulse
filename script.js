@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   DATA
+   DATA for cities, maps cities and feautures
 ═══════════════════════════════════════ */
 const CITIES = [
   { name: 'Delhi', lat: 28.67, lng: 77.22, aqi: 168, cat: 'unhealth', pm25: 72, pm10: 145, no2: 52, o3: 28, co: 1.2, so2: 18, trend: [180,165,172,155,168,175,168] },
