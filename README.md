@@ -215,14 +215,6 @@ No API key required for public endpoints, but rate limits apply. A Node.js proxy
 
 ---
 
-## Research Publication
-
-This project was developed alongside published research in computational environmental monitoring:
-
-**Shikhar Bhardwaj et al.** — *[Solar Energy Assessment Through Building Integrated Photovoltaics on Facades and Energy Efficiency at
-LOD 1]*, ICCDM 2026, Springer Lecture Notes in Networks and Systems (LNNS), Scopus-indexed.
-
----
 
 ## Author
 
